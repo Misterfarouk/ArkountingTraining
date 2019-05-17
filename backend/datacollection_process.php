@@ -11,22 +11,22 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if ($username == null || $username == "") {
-      $usernameErr = "Full-Name is required";
-    } else {
-      $username = test_input($username);
-    }
-  
-    if ($email == null || $email == "") {
-        $emailErr = "Email is required";
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Email invalid";
-    }
-    if ($training_option == null || $training_option == "") {
-        $training_optionErr = "Training option is required";
+      if ($username == null || $username == "") {
+        $usernameErr = "Full-Name is required";
       } else {
-        $training_option = test_input($training_option);
-    }
+        $username = test_input($username);
+      }
+    
+      if ($email == null || $email == "") {
+          $emailErr = "Email is required";
+      } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $emailErr = "Email invalid";
+      }
+      if ($training_option == null || $training_option == "") {
+          $training_optionErr = "Training option is required";
+        } else {
+          $training_option = test_input($training_option);
+      }
       if (empty($usernameErr) && empty($emailErr) && empty($training_optionErr)) 
       {
           $sql = "INSERT INTO applicants (username, email, training_option)
@@ -46,7 +46,14 @@
       }
         
     }
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $sql = "SELECT * FROM training_options";
+    $result = mysqli_query ($connection, $sql) ;
 
+    if (mysqli_num_rows($result) > 0 ){
+       $row = mysqli_fetch_assoc($result);
+        echo json_encode($row);
+      
+    }
     
-
 ?>

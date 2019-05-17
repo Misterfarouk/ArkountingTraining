@@ -1,4 +1,6 @@
 $(document).ready(function(){// Variable to hold request
+
+   
 var request;
 
 // Bind to the submit event of our form
@@ -89,5 +91,11 @@ $(document).on('click', '.test2', function() {
 
 $(document).ready(function(){
     $(".clicked").click();
+    console.log("hello loading");
 });
+});
+
+
+$(window).load(function(e) {
+    console.log("hello loading");
 })
