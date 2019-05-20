@@ -1,6 +1,32 @@
 $(document).ready(function(){// Variable to hold request
 
    
+ //Make an Ajax request to a PHP script called car-models.php
+            //This will return the data that we can add to our Select element.
+            $.ajax({
+                url: './backend/select_dropdown.php',
+                type: 'get',
+                success: function(data){
+    
+                    //Log the data to the console so that
+                    //you can get a better view of what the script is returning.
+                    console.log("victor:"+data);
+    
+                    $.each(data, function(key, modelName){
+                        //Use the Option() constructor to create a new HTMLOptionElement.
+                        var option = new Option(modelName, modelName);
+                        //Convert the HTMLOptionElement into a JQuery object that can be used with the append method.
+                        $(option).html(modelName);
+                        //Append the option to our Select element.
+                        $("#training").append(option);
+                    });
+    
+                    //Change the text of the default "loading" option.
+                    $('#training_option').text('Please select a training option');
+    
+                }
+            });
+
 var request;
 
 // Bind to the submit event of our form
@@ -76,7 +102,7 @@ $("#contactForm").submit(function(event){
 
 
     $(document).on('click', '.test1', function() {
-        $(".amount").html( "Amount to be paid <b>N45,000<b>");
+        $(".amount").html( "Amount to be paid <b>N47,500<b>");
         });
 
         $(document).on('click', '.test', function() {
@@ -98,5 +124,51 @@ $("#contactForm").submit(function(event){
 
         });
 
+        var amountToPay;
 
+        function myfunc(id){
+              
+            if(id == 47){
+                amountToPay = 5000000- (5000000 * 0.05);
+            }else if (id == 48){
+                amountToPay = 3000000;
+            }else if (id == 49){
+                amountToPay = 1500000;
+          }
+        }
+
+        function payWithPaystack(){
+            var handler = PaystackPop.setup({
+              key: 'pk_live_bf680426c45fe2eac3235e767411cc44cdcf79f7',
+              email: 'customer@email.com',
+              amount: amountToPay,
+              currency: "NGN",
+              ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+              firstname: 'Stephen',
+              lastname: 'King',
+              // label: "Optional string that replaces customer email"
+              metadata: {
+                 custom_fields: [
+                    {
+                        display_name: "Mobile Number",
+                        variable_name: "mobile_number",
+                        value: "+2348012345678"
+                    }
+                 ]
+              },
+              callback: function(response){
+                  alert('success. transaction ref is ' + response.reference);
+              },
+              onClose: function(){
+                  alert('window closed');
+              }
+            });
+            handler.openIframe();
+          }
+
+          $(document).ready(function() {
+
+            
     
+        });
+          
