@@ -74,28 +74,29 @@ $("#contactForm").submit(function(event){
        
 });
 
-$(document).on('click', '.test', function() {
-    $(".amount").html( "Amount to be paid <b>N30,000<b>");
-    // console.log("Hello");
+
+    $(document).on('click', '.test1', function() {
+        $(".amount").html( "Amount to be paid <b>N45,000<b>");
+        });
+
+        $(document).on('click', '.test', function() {
+            $(".amount").html( "Amount to be paid <b>N30,000<b>");
+        });
+
+        $(document).on('click', '.test2', function() {
+            $(".amount").html( "Amount to be paid <b>N15,000<b>");
+        });
+
+        $(document).ready(function(){
+            $(".clicked").click();
+        });
 });
 
-$(document).on('click', '.test1', function() {
-  $(".amount").html( "Amount to be paid <b>N45,000<b>");
-    // console.log("Hello");
-});
+    // $(window).load(function() {
+        // console.log("hello loading")
+        $(window).on("load", function (e) {
 
-$(document).on('click', '.test2', function() {
-    $(".amount").html( "Amount to be paid <b>N15,000<b>");
-    // console.log("Hello");
-});
-
-$(document).ready(function(){
-    $(".clicked").click();
-    console.log("hello loading");
-});
-});
+        });
 
 
-$(window).load(function(e) {
-    console.log("hello loading");
-})
+    
