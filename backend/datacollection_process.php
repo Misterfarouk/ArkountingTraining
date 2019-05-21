@@ -4,6 +4,9 @@
     $username = $_POST['username'];
     $email = $_POST['email'];
     $training_option = $_POST['training_option'];
+    $payment_package = $_POST['payment_package'];
+    $result = $_POST['result'];
+
 
     $usernameErr = "";
     $emailErr = "";
@@ -29,8 +32,8 @@
       }
       if (empty($usernameErr) && empty($emailErr) && empty($training_optionErr)) 
       {
-          $sql = "INSERT INTO applicants (username, email, training_option)
-          VALUES ( '$username', '$email', '$training_option' )";
+          $sql = "INSERT INTO applicants (username, email, training_option, payment_package, result )
+          VALUES ( '$username', '$email', '$training_option', '$payment_package', '$result' )";
       
           if (mysqli_query($connection, $sql)) {
             http_response_code(200);
@@ -45,7 +48,9 @@
         echo json_encode( $arr );
       }
         
-    }
+    };
+
+
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $sql = "SELECT * FROM training_options";
     $result = mysqli_query ($connection, $sql) ;

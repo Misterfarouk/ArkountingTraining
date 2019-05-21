@@ -1,6 +1,14 @@
 $(document).ready(function(){// Variable to hold request
 
-   
+    $("input#username").on('keyup', function(e) {
+        // console.log("change!!!");
+        $(".usernameError").empty();
+    });
+    $("input#email").on('keyup', function(e) {
+        // console.log("change!!!");
+        $(".emailError").empty();
+    });
+
  //Make an Ajax request to a PHP script called car-models.php
             //This will return the data that we can add to our Select element.
             $.ajax({
@@ -99,30 +107,25 @@ $("#contactForm").submit(function(event){
 
        
 });
+    
 
 
     $(document).on('click', '.test1', function() {
         $(".amount").html( "Amount to be paid <b>N47,500<b>");
-        });
+    });
 
-        $(document).on('click', '.test', function() {
-            $(".amount").html( "Amount to be paid <b>N30,000<b>");
-        });
+    $(document).on('click', '.test', function() {
+        $(".amount").html( "Amount to be paid <b>N30,000<b>");
+    });
 
-        $(document).on('click', '.test2', function() {
-            $(".amount").html( "Amount to be paid <b>N15,000<b>");
-        });
+    $(document).on('click', '.test2', function() {
+        $(".amount").html( "Amount to be paid <b>N15,000<b>");
+    });
 
-        $(document).ready(function(){
-            $(".clicked").click();
-        });
+    $(document).ready(function(){
+        $(".clicked").click();
+    });
 });
-
-    // $(window).load(function() {
-        // console.log("hello loading")
-        $(window).on("load", function (e) {
-
-        });
 
         var amountToPay;
 
@@ -166,9 +169,5 @@ $("#contactForm").submit(function(event){
             handler.openIframe();
           }
 
-          $(document).ready(function() {
-
-            
-    
-        });
+        
           
