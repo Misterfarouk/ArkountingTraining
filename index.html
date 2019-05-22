@@ -172,19 +172,19 @@
                     <div class="col-lg-4">
                         <ul class="nav nav-tabs design_tab" role="tablist">
                             <li class="nav-item wow fadeInUp" data-wow-delay="0.4s">
-                                <a class="nav-link active test1 clicked" onclick="myfunc(47, out_pay)" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="true">
+                                <a class="nav-link active test1 clicked" onclick="myfunc(47)" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="true">
                                     <h5>Outright Payment</h5>
                                     <p>Pay all the fee<br> 5% discount</p>
                                 </a>
                             </li>
                             <li class="nav-item wow fadeInUp" data-wow-delay="0.6s">
-                                <a class="nav-link test" id="one-tab" data-toggle="tab" onclick="myfunc(48, two_install)" href="#one" role="tab" aria-controls="one" aria-selected="false">
+                                <a class="nav-link test" id="one-tab" data-toggle="tab" onclick="myfunc(48)" href="#one" role="tab" aria-controls="one" aria-selected="false">
                                     <h5>2 Installments</h5>
                                     <p>Broken into <br> N30,000 and N20,000</p>
                                 </a>
                             </li>
                             <li class="nav-item wow fadeInUp" data-wow-delay="0.6s">
-                                <a class="nav-link test2" id="one-tab" data-toggle="tab"onclick="myfunc(49, three_install)" href="#one" role="tab" aria-controls="one" aria-selected="false">
+                                <a class="nav-link test2" id="one-tab" data-toggle="tab"onclick="myfunc(49)" href="#one" role="tab" aria-controls="one" aria-selected="false">
                                     <h5>3 Installments</h5>
                                     <p>Broken into <br> N15,000 weekly</p>
                                 </a>
@@ -196,7 +196,7 @@
                             <div class="tab-pane fade show active" id="one" role="tabpanel" aria-labelledby="one-tab">
                                 <div class="tab_img">
                                     <div class="contact_form mb_20">
-                                        <form action="backend/datacollection_process.php" class="contact_form_box" method="post" id="contactForm">
+                                        <form action="" class="contact_form_box" method="post" id="contactForm">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group text_box">
@@ -231,10 +231,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div>
+                                                <input type="hidden" value="" id="okc" name="okc">
+                                            </div>
                             
                                             </div>
                                                 <button type="submit" class="btn_three btn_hover agency_banner_btn mt_10">Make Payment</button>
-                                                <button type="button" onclick="payWithPaystack()"> Pay </button> 
+ 
                                             </form>
                                                 </div>
                                             </div>
