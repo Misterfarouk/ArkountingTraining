@@ -3,6 +3,7 @@ $(document).ready(function(){
     // Variable to hold request
     var amountToPay;
 
+    //clearing error messages 
     $("input#username").on('keyup', function(e) {
         $(".usernameError").empty();
     });
@@ -67,9 +68,10 @@ $("#contactForm").submit(function(event){
         $(".clicked").click();
     });
 
+        //paystack integration
         function payWithPaystack(customer_email, customer_name, amt){
         var handler = PaystackPop.setup({
-          key: 'pk_live_bf680426c45fe2eac3235e767411cc44cdcf79f7',
+          key: 'pk_test_cdcc421dda96b12747c881e87864b28dc25bc05b',
           email: customer_email,
           amount: amt,
           currency: "NGN",
