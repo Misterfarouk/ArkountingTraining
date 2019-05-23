@@ -5,7 +5,6 @@
     $email = $_POST['email'];
     $training_option = $_POST['training_option'];
 
-
     $usernameErr = "";
     $emailErr = "";
     $training_optionErr = "";
@@ -16,7 +15,8 @@
         $usernameErr = "Full-Name is required";
       } else {
         $username = test_input($username);
-      }    
+      }
+    
       if ($email == null || $email == "") {
           $emailErr = "Email is required";
       } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -45,6 +45,9 @@
         echo json_encode( $arr );
       }
         
+    }
+
+      
     };
-    
+   
 ?>

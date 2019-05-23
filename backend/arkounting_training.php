@@ -1,7 +1,7 @@
 <?php
      $server = "localhost";
      $username = "root";
-     $password = "";
+     $password = "root";
      $database = "arkounting_training";
 
      //create connection

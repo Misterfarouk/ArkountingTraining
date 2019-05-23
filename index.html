@@ -174,7 +174,7 @@
                             <li class="nav-item wow fadeInUp" data-wow-delay="0.4s">
                                 <a class="nav-link active test1 clicked" onclick="myfunc(47)" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="true">
                                     <h5>Outright Payment</h5>
-                                    <p>Pay all the fee<br> 5% discount</p>
+                                    <p>Pay all the fee<br> 5% discount</p> 
                                 </a>
                             </li>
                             <li class="nav-item wow fadeInUp" data-wow-delay="0.6s">
@@ -267,6 +267,11 @@
                 <h2 class="f_size_34 f_700 t_color3 l_height40 text-center pr_70 mb-30 wow fadeInUp padded" data-wow-delay="0.3s">Have More Questions?</h2>
                 <p class="f_300 f_size_16 l_height26 text-center">Talk to us and we will get back right at you.</p>
             </div>
+            
+
+
+            <div id="response"> <!--message will appear here--> </div>
+
             <div class="row">
                 <div class="col-lg-3 pr-0">
                     <div class="contact_info_item">
@@ -274,6 +279,7 @@
                         <p class="f_400 f_size_15">1st Floor, right wing, Law Union and Rock, 14, Hughes Avenue, Alagomeji Yaba Lagos Nigeria. </p>
                         <div class="dot middle_dot"><span class="dot1"></span><span class="dot2"></span></div>
                     </div>
+
                     <div class="contact_info_item">
                         <h6 class="f_p f_size_20 t_color3 f_500 mb_20">Contact Info</h6>
                         <p class="f_400 f_size_15"><span class="f_400 t_color3">Phone:</span> <a href="tel:3024437488">+2349031822345</a></p>
@@ -283,26 +289,33 @@
                 </div>
                 <div class="col-lg-8 offset-lg-1">
                     <div class="contact_form mb_40">
-                        <form action="" class="contact_form_box" method="post" id="contactForm">
+                        <form action="" class="contact_form_box" method="post" id="conatactInformation">
+                           
+                             <div id="messages"></div>
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group text_box">
-                                         <input type="text" id="name" name="name" placeholder="Your Name" required>
-                                    </div> 
+                                        <span class="text-danger nameError"></span>
+                                         <input type="text" id="name" name="name" placeholder="Your Name">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group text_box">
-                                        <input type="text" name="email" id="email" placeholder="Your Email" required>
+                                        <span class="text-danger contact_emailError"></span>
+                                        <input type="text" name="contact_email" id="contact_email" placeholder="Your Email">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group text_box">
-                                        <input type="text" id="subject" name="subject" placeholder="Subject" >
+                                        <span class="text-danger subjectError"></span>
+                                        <input type="text" id="subject" name="subject" placeholder="Subject">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb_20">
                                     <div class="form-group text_box">
-                                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter Your Message . . ." required></textarea>
+                                        <span class="text-danger messageError"></span>
+                                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter Your Message . . ."></textarea>
                                     </div>
                                 </div>
                             </div>
