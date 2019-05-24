@@ -38,6 +38,8 @@ $(document).ready(function(){
 
     // Contact Form
     // $("#conatactInformation").submit(function(e) {
+       function perforDBUpdate(customer_email, customer_name, amt){
+        
        
     //     // Prevents form from reloading 
     //     e.preventDefault();
@@ -47,69 +49,70 @@ $(document).ready(function(){
     //         request.abort();
     //     }
     //     // setup some local variables
-    //     var $form = $(this);
+        var $form = $("#contactForm");
 
-    //     // Let's select and cache all the fields
-    //     var $inputs = $form.find("input, select, button, textarea");
+        // Let's select and cache all the fields
+        var $inputs = $form.find("input, select, button, textarea");
 
-    //     // Serialize the data in the form
-    //     var serializedData = $form.serialize();
+        // Serialize the data in the form
+        var serializedData = $form.serialize();
 
-    //     // console.log(serializedData);
+         console.log(serializedData);
 
-    //     // Let's disable the inputs for the duration of the Ajax request.
-    //     // Note: we disable elements AFTER the form data has been serialized.
-    //     // Disabled form elements will not be serialized.
-    //     $inputs.prop("disabled", true);
-    //     $(".nameError").empty();
-    //     $(".contact_emailError").empty();
-    //     $(".subject").empty();
-    //     $(".message").empty();
+        // Let's disable the inputs for the duration of the Ajax request.
+        // Note: we disable elements AFTER the form data has been serialized.
+        // Disabled form elements will not be serialized.
+        $inputs.prop("disabled", true);
+        $(".nameError").empty();
+        $(".contact_emailError").empty();
+        $(".subject").empty();
+        $(".message").empty();
 
-    //     // Fire up the request to /form.php
-    //     request = $.ajax({
-    //         url: "./backend/datacollection2.php",
-    //         type: "post",
-    //         data: serializedData
-    //     });
+        // Fire up the request to /form.php
+        request = $.ajax({
+            url: "./backend/datacollection_process.php",
+            type: "post",
+            data: serializedData
+        });
 
-    //     // Callback handler that will be called on success
-    //     request.done(function (response, textStatus, jqXHR){
-    //         // Log a message to the console
-    //         // console.log(response);
-    //         var resp = "<div class='alert alert-success'>" + response + "</div>"  
-    //         $(".notification").html(resp);
+        // Callback handler that will be called on success
+        request.done(function (response, textStatus, jqXHR){
+            // Log a message to the console
+            // console.log(response);
+            var resp = "<div class='alert alert-success'>" + response + "</div>"  
+            $(".notification").html(resp);
 
-    //     });
+        });
 
-    //     // Callback handler that will be called on failure
-    //     request.fail(function (jqXHR, textStatus, errorThrown){
-    //         // Log the error to the console      
+        // Callback handler that will be called on failure
+        request.fail(function (jqXHR, textStatus, errorThrown){
+            // Log the error to the console      
 
-    //         var resp = JSON.parse(jqXHR.responseText);
-    //         console.log(resp);
-    //     if (resp.name) {
-    //         $(".nameError").html(resp.name);
-    //     }
-    //     if (resp.contactemail) {
-    //         $(".contactemailError").html(resp.contactemail);
-    //     }
-    //     if (resp.subject) {
-    //         $(".subject").html(resp.subject);
-    //     }
-    //     if (resp.message) {
-    //         $(".message").html(resp.message);
-    //         }
-    //     });
+            var resp = JSON.parse(jqXHR.responseText);
+            console.log(resp);
+        if (resp.name) {
+            $(".nameError").html(resp.name);
+        }
+        if (resp.contactemail) {
+            $(".contactemailError").html(resp.contactemail);
+        }
+        if (resp.subject) {
+            $(".subject").html(resp.subject);
+        }
+        if (resp.message) {
+            $(".message").html(resp.message);
+            }
+        });
 
-    //     // Callback handler that will be called regardless
-    //     // if the request failed or succeeded
-    //     request.always(function () {
-    //         // Reenable the inputs
-    //         $inputs.prop("disabled", false);
-    //     });
+        // Callback handler that will be called regardless
+        // if the request failed or succeeded
+        request.always(function () {
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+        });
 
-    // })
+    
+       }
 
     $("input#name"). on('keyup' , function(e) {
         $(".nameError").empty()
@@ -134,15 +137,7 @@ $(document).ready(function(){
            url: url,
            data: $(this).serialize(),
            success: function (data) {
-            // var messageAlert = 'alert-' + 'success';
-            // var messageText = "message sent";
-            // console.log(data.type);
-            // console.log(data);
-            // var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-            // if (messageAlert && messageText) {
-            //  $('#conatactInformation').find('#messages').html(alertBox);
-            //  $('#conatactInformation')[0].reset();
-            // }
+          
             $("#messages").hide();
             var alertBox = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + data + '</div>';
             $("#messages").html(alertBox).fadeIn("slow");
@@ -150,15 +145,10 @@ $(document).ready(function(){
                 $("#messages").fadeOut("slow");
             }, 40000);
 
-            // document.getElementById("messages").innerHTML = msg;
-
-            // setTimeout(function(){
-            // document.getElementById("messages").innerHTML = '';
-            // }, 2000);
+    
 
            },
            error: function(err) {
-        //   console.log(err);
 
                 if (err.status == 400) 
                 {            
@@ -216,9 +206,6 @@ $("#contactForm").submit(function(event){
         $(".amount").html( "Amount to be paid <b>N15,000<b>");
     });
 
-    $(document).ready(function(){
-        $(".clicked").click();
-    });
 
         //paystack integration
         function payWithPaystack(customer_email, customer_name, amt){
