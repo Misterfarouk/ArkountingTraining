@@ -135,15 +135,7 @@ $(document).ready(function(){
            url: url,
            data: $(this).serialize(),
            success: function (data) {
-            // var messageAlert = 'alert-' + 'success';
-            // var messageText = "message sent";
-            // console.log(data.type);
-            // console.log(data);
-            // var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-            // if (messageAlert && messageText) {
-            //  $('#conatactInformation').find('#messages').html(alertBox);
-            //  $('#conatactInformation')[0].reset();
-            // }
+          
             $("#messages").hide();
             var alertBox = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + data + '</div>';
             $("#messages").html(alertBox).fadeIn("slow");
@@ -151,15 +143,10 @@ $(document).ready(function(){
                 $("#messages").fadeOut("slow");
             }, 40000);
 
-            // document.getElementById("messages").innerHTML = msg;
-
-            // setTimeout(function(){
-            // document.getElementById("messages").innerHTML = '';
-            // }, 2000);
+    
 
            },
            error: function(err) {
-        //   console.log(err);
 
                 if (err.status == 400) 
                 {            
@@ -217,9 +204,6 @@ $("#contactForm").submit(function(event){
         $(".amount").html( "Amount to be paid <b>N15,000<b>");
     });
 
-    $(document).ready(function(){
-        $(".clicked").click();
-    });
 
         //paystack integration
 function payWithPaystack(customer_email, customer_name, amt){
