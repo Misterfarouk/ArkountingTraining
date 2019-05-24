@@ -322,6 +322,8 @@ function myfunc(id, Payment_package){
          $('input[name="okc"]').val(amountToPay);
   }
 }
-
+$(document).ready(function(){
+    $('.clicked').click();
+});
         
           
