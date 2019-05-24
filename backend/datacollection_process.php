@@ -4,6 +4,11 @@
     $username = $_POST['username'];
     $email = $_POST['email'];
     $training_option = $_POST['training_option'];
+    $payment_package = $_POST['payment'];
+    $amount_paid = $_POST['okc'];
+    $transaction_ref = $_POST['transaction_ref'];
+
+
 
     $usernameErr = "";
     $emailErr = "";
@@ -29,8 +34,8 @@
       }
       if (empty($usernameErr) && empty($emailErr) && empty($training_optionErr)) 
       {
-          $sql = "INSERT INTO applicants (username, email, training_option)
-          VALUES ( '$username', '$email', '$training_option' )";
+          $sql = "INSERT INTO applicants (username, email, training_option, payment_package, amount_paid, transaction_ref)
+          VALUES ( '$username', '$email', '$training_option', '$payment_package','$amount_paid','$transaction_ref' )";
       
           if (mysqli_query($connection, $sql)) {
             http_response_code(200);

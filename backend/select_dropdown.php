@@ -1,7 +1,5 @@
 <?php
-   // require_once("arkounting_training.php");
-
-//Example data.
+   
 $training = array(
     'Financial Management', 'Software Development',
     'Human Resource Management', 'Business Analysis/ Process Design',

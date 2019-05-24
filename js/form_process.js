@@ -210,7 +210,7 @@ $("#contactForm").submit(function(event){
     });
 
     $(document).on('click', '.test', function() {
-        $(".amount").html( "Amount to be paid <b>N30,000<b>");
+        $(".amount").html( "Amount to be paid <b>N25,000<b>");
     });
 
     $(document).on('click', '.test2', function() {
@@ -245,7 +245,7 @@ function payWithPaystack(customer_email, customer_name, amt){
           },
           callback: function(response){
              alert('success. transaction ref is ' + response.reference);
-              perforDBUpdate(customer_email, customer_name, amt);
+              perforDBUpdate(customer_email, customer_name, amt,  response.reference);
         
           },
           onClose: function(){
@@ -256,7 +256,7 @@ function payWithPaystack(customer_email, customer_name, amt){
       }
 });
 
-function  perforDBUpdate(customer_email, customer_name, amt){
+function  perforDBUpdate(customer_email, customer_name, amt, transaction_ref){
 
           // setup some local variables
         var $form = $("#contactForm");
@@ -265,7 +265,13 @@ function  perforDBUpdate(customer_email, customer_name, amt){
         var $inputs = $form.find("input, select, button, textarea");
 
         // Serialize the data in the form
-        var serializedData = $form.serialize();
+        var serializedData = $form.serializeArray();
+        var tx = {
+            'name': 'transaction_ref',
+            'value': transaction_ref
+        };
+        serializedData.push(tx);
+        console.log(serializedData);
 
          console.log(serializedData);
 
@@ -317,15 +323,15 @@ function  perforDBUpdate(customer_email, customer_name, amt){
 }
 
 
-function myfunc(id){
-          
+function myfunc(id, Payment_package){
+    $('input[name=payment]').val(Payment_package);
     if(id == 47){
         amountToPay = 5000000- (5000000 * 0.05);
         //assing to input tag
         $('input[name="okc"]').val(amountToPay);
 
     }else if (id == 48){
-        amountToPay = 3000000;
+        amountToPay = 2500000;
         $('input[name="okc"]').val(amountToPay);
     }else if (id == 49){
         amountToPay = 1500000;
