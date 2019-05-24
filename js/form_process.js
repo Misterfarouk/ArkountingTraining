@@ -39,15 +39,6 @@ $(document).ready(function(){
     // Contact Form
     // $("#conatactInformation").submit(function(e) {
        function perforDBUpdate(customer_email, customer_name, amt){
-        
-       
-    //     // Prevents form from reloading 
-    //     e.preventDefault();
-
-    //     // Abort any pending request
-    //     if (request) {
-    //         request.abort();
-    //     }
     //     // setup some local variables
         var $form = $("#contactForm");
 
